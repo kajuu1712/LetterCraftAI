@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://lettercraftai-backend.onrender.com/"          //http://localhost:8080/api
+  baseURL: "https://lettercraftai-backend.onrender.com"          //http://localhost:8080/api
 });
 
 api.interceptors.request.use((config) => {
