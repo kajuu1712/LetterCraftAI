@@ -6,7 +6,7 @@ An AI-powered full-stack web application that generates professional letters and
 
 ## 🚀 Live Deployment
 
-- **LINK:** https://lettercraftai-frontend.onrender.com 
+[Live Demo](https://lettercraftai-frontend.onrender.com)
 
 👉 Try it live and generate letters instantly!
 
