@@ -1,6 +1,6 @@
 import Letter from "../Models/letter.js";
 
-// ================= GET ALL LETTERS =================
+// GET ALL LETTERS 
 export const getHistory = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -23,7 +23,7 @@ export const getHistory = async (req, res) => {
 };
 
 
-// ================= DELETE LETTER =================
+// DELETE LETTER 
 export const deleteLetter = async (req, res) => {
   try {
     const userId = req.user.id;

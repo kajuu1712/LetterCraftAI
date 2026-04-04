@@ -12,7 +12,7 @@ export const generateLetter = async (req, res) => {
       return res.status(400).json({ message: "type, tone and input are required" });
     }
 
-    // build prompt
+    // prompt
     const prompt = `
 You are a professional letter writing assistant.
 Only write professional letters based on the details provided.
@@ -30,10 +30,8 @@ Instructions:
 - Use proper letter formatting with greeting and sign-off
     `;
 
-    // call Gemini
     const aiResponse = await generateContent(prompt);
 
-    // save to DB
     const newLetter = await Letter.create({
       user: userId,
       type,

@@ -1,11 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 
-// initialize AI with API key
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
-// reusable function
 const generateContent = async (prompt) => {
   try {
     const response = await ai.models.generateContent({

@@ -2,7 +2,6 @@ import User from "../Models/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-// helper to create token
 const generateToken = (user) => {
   return jwt.sign(
     { id: user._id, email: user.email },
@@ -11,7 +10,7 @@ const generateToken = (user) => {
   );
 };
 
-// ================= SIGNUP =================
+// SIGNUP
 export const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -47,7 +46,7 @@ export const signup = async (req, res) => {
 };
 
 
-// ================= LOGIN =================
+// LOGIN
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -80,7 +79,7 @@ export const login = async (req, res) => {
 };
 
 
-// ================= LOGOUT =================
+// LOGOUT
 export const logout = async (req, res) => {
   try {
     // JWT is stateless → nothing to destroy on server
