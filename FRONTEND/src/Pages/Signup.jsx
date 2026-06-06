@@ -17,7 +17,7 @@ export default function Signup() {
     setLoading(true);
     setError("");
     try {
-      const { data } = await api.post("/user/register", formData);
+      const { data } = await api.post("/user/signup", formData);
       localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (err) {
