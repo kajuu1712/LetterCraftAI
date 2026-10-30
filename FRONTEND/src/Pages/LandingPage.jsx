@@ -35,7 +35,7 @@ export default function Landing () {
           <button
             onClick={() => navigate("/signup")}
             className="px-6 py-2.5 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 transition">
-            Get started free
+            Register
           </button>
         </div>
       </section>

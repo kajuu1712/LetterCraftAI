@@ -11,21 +11,32 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 const allowedOrigins = [
+  "https://hoppscotch.io",
+  "https://hoppscotch.app",
   "http://localhost:5173", // local frontend
   "https://lettercraftai-frontend.onrender.com"
 ];
 
-
 app.use(cors({
-  origin: function(origin, callback){
-    if(!origin || allowedOrigins.includes(origin)){
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(null, false);
     }
   },
   credentials: true
 }));
+// app.use(cors({
+//   origin: function(origin, callback){
+//     if(!origin || allowedOrigins.includes(origin)){
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
 app.use(express.json());
 connectDB();
 

@@ -14,9 +14,9 @@ export const generateLetter = async (req, res) => {
 
     // prompt
     const prompt = `
-You are a professional letter writing assistant.
-Only write professional letters based on the details provided.
-If the input seems off-topic, harmful, or irrelevant to letter writing, politely refuse and ask for proper details instead.
+You are a professional letter and email writing assistant.
+Only write professional letters and email based on the details provided.
+If the input seems off-topic, harmful, or irrelevant to letter and email writing, politely refuse and ask for proper details instead.
 
 ---
 
@@ -26,8 +26,8 @@ ${Object.entries(input).map(([k, v]) => `${k}: ${v}`).join("\n")}
 
 Instructions:
 - Keep it professional, structured, and impactful
-- Return only the letter, no explanations or extra text
-- Use proper letter formatting with greeting and sign-off
+- Return only the ${type}, no explanations or extra text
+- Use proper ${type} formatting with greeting and sign-off
     `;
 
     const aiResponse = await generateContent(prompt);

@@ -2,14 +2,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Generate from "./Generate.jsx";
 import History from "./History.jsx";
+import api from "../api/axios";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("generate");
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await api.post("/user/logout");
+    } catch (error) {
+      console.error("Backend logout endpoint failed:", error?.response?.data || error.message);
+    } finally {
+      // client-side cleanup
+      localStorage.removeItem("token");
+      navigate("/");
+    }
   };
 
   return (
@@ -31,7 +39,7 @@ export default function Dashboard() {
           </button>
         </div>
       </nav>
-
+      
       {/* Tab Bar */}
       <div className="flex gap-1 px-8 border-b border-white/10">
         <button

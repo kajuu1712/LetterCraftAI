@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { useRef } from "react";
 
 export default function Signup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handlePassword = () => {
+    setShowPassword(!showPassword);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,8 +77,9 @@ export default function Signup() {
             required
             className="w-full px-4 py-2.5 text-sm bg-[#1a1a1a] border border-white/10 text-white placeholder-gray-500 rounded-lg focus:outline-none focus:border-purple-500"
           />
-          <input
-            type="password"
+          {/* <div className="relative flex items-center">
+            <input
+            type= {showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
             value={formData.password}
@@ -80,6 +87,26 @@ export default function Signup() {
             required
             className="w-full px-4 py-2.5 text-sm bg-[#1a1a1a] border border-white/10 text-white placeholder-gray-500 rounded-lg focus:outline-none focus:border-purple-500"
           />
+          <span onClick={handlePassword}>Show</span>
+          </div> */}
+          <div className="relative flex items-center">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="w-full px-4 py-2.5 pr-16 bg-[#1a1a1a] border border-[#333333] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-600 transition-colors"
+            />
+            
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 text-xs text-gray-400 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+          </div>
           <button
             type="submit"
             disabled={loading}

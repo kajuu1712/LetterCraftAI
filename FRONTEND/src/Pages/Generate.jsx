@@ -220,7 +220,7 @@ export default function Generate() {
         <button
           onClick={() => setStep(2)}
           className="flex-1 py-2.5 text-sm text-gray-400 border border-white/10 rounded-lg hover:bg-white/5 transition">
-          Regenerate
+          Edit fields and Regenerate
         </button>
         <button
           onClick={handleReset}

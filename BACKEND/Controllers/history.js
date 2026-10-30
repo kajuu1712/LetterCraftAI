@@ -3,6 +3,8 @@ import Letter from "../Models/letter.js";
 // GET ALL LETTERS 
 export const getHistory = async (req, res) => {
   try {
+
+    // console.log(req.user);  // req.user contains the decoded token payload
     const userId = req.user.id;
 
     // find all letters of this user, newest first
@@ -11,7 +13,7 @@ export const getHistory = async (req, res) => {
 
     res.status(200).json({
       message: "Letters fetched successfully",
-      output: letters
+      output: letters,
     });
 
   } catch (err) {
@@ -26,8 +28,8 @@ export const getHistory = async (req, res) => {
 // DELETE LETTER 
 export const deleteLetter = async (req, res) => {
   try {
-    const userId = req.user.id;
-    const letterId = req.params.id;
+    const userId = req.user.id;   // from token
+    const letterId = req.params.id;  
 
     // find and delete only if it belongs to this user
     const deletedLetter = await Letter.findOneAndDelete({
