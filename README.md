@@ -47,7 +47,7 @@ An AI-powered full-stack web application that generates professional letters and
 - Bcrypt.js
 
 **AI**
-- Google Gemini API (`gpt-6.1-terra`)
+- Google Gemini API (`gemini-3-flash-preview`)
 
 ---
 
